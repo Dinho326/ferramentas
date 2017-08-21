@@ -28,12 +28,12 @@ public class FerramentaController {
 	
 	@RequestMapping("/admin")
 	public String index() {
-		return "redirect:/admin/index";
+		return "redirect:/index";
 	}
 	
 	@RequestMapping("/admin/adicionar-ferramenta")
 	public String adicionar() {
-		return "/admin/adicionar-ferramenta";
+		return "adicionar-ferramenta";
 	}
 	
 	@RequestMapping("/admin/lista-ferramenta")
@@ -41,7 +41,7 @@ public class FerramentaController {
 		Iterable<Ferramenta> lista = ferramenta.findAll();
 		model.addAttribute("ferramentas", lista);
 		
-		return "/admin/lista-ferramenta";
+		return "admin/lista-ferramenta";
 	}
 	
 	@RequestMapping(value = "/admin/salvar", method=RequestMethod.POST)
