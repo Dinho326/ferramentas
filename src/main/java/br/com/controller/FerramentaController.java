@@ -22,7 +22,7 @@ public class FerramentaController {
 	private FerramentaRepository ferramenta;
 	
 	@RequestMapping("/")
-	public String index() {
+	public String indexView() {
 		return "/index";
 	}
 	
