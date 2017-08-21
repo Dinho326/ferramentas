@@ -23,7 +23,7 @@ public class FerramentaController {
 	
 	@RequestMapping("/")
 	public String indexView() {
-		return "/index";
+		return "index";
 	}
 	
 	@RequestMapping("/admin")
