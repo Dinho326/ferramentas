@@ -28,12 +28,12 @@ public class FerramentaController {
 	
 	@RequestMapping("/admin")
 	public String index() {
-		return "redirect:/index";
+		return "redirect:admin/index";
 	}
 	
 	@RequestMapping("/admin/adicionar-ferramenta")
 	public String adicionar() {
-		return "adicionar-ferramenta";
+		return "admin/adicionar-ferramenta";
 	}
 	
 	@RequestMapping("/admin/lista-ferramenta")
