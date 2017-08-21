@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layout/template">
+<body>
+<section layout:fragment="content"> 
+    <div id="wrapper">
+        <div id="page-wrapper">
+		<div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Adicionar Ferramenta</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Formulário
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" th:action="salvar" method="post">
+                                        <div class="form-group">
+                                            <label>Patrimônio</label>
+                                            <input  type="number" name="patrimonio" class="form-control"/>
+                                            <p class="help-block">Exemplo: 159354</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nome</label>
+                                            <input name="nome" class="form-control"/>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                        <button type="reset" class="btn btn-default">Limpar</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+		</div>
+	</div>
+</section>
+</body>
+</html>
