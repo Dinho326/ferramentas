@@ -21,6 +21,11 @@ public class FerramentaController {
 	@Autowired
 	private FerramentaRepository ferramenta;
 	
+	@RequestMapping("/")
+	public String index() {
+		return "/index";
+	}
+	
 	@RequestMapping("/admin")
 	public String index() {
 		return "redirect:/admin/index";
