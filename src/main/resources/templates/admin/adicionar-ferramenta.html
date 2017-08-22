@@ -24,7 +24,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" th:action="@{salvar}" method="post">
+                                    <form role="form" th:object="${ferramenta}" th:action="@{salvar}" method="post">
                                         <div class="form-group">
                                             <label>Patrimônio</label>
                                             <input  type="number" name="patrimonio" th:fied="*{patrimonio}" class="form-control"/>
