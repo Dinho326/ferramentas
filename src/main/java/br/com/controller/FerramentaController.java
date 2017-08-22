@@ -45,13 +45,19 @@ public class FerramentaController {
 	}
 	
 	@RequestMapping(value = "/admin/salvar", method=RequestMethod.POST)
-	public String salvar( @RequestParam("patrimonio") Long patrimonio,
-			@RequestParam("nome") String nome) {
-		Ferramenta f = new Ferramenta(patrimonio, nome);
+	public ModelAndView salvar( Ferremanta f) {
+		//Ferramenta f = new Ferramenta(patrimonio, nome);
 		ferramenta.save(f);
+		 ModelAndView mv = new ModelAndView("redirect:/admin/lista-ferramenta");
+		 mv.addObject("ferramenta", f);
 		//Iterable<Ferramenta> lista = ferramenta.findAll();
 		//model.addAttribute("ferramentas", lista);
-		return "redirect:/admin/lista-ferramenta";
+		return mv;
 	}
 	
+	 @RequestMapping("/admin/edit/{id}")
+    	public ModelAndView edit(@PathVariable("id") Long id) {
+         
+        return salvar(ferramenta.findOne(id));
+    }
 }
