@@ -43,7 +43,6 @@ public class FerramentaController {
 	public String lista(Model model) {
 		Iterable<Ferramenta> lista = ferramenta.findAll();
 		model.addAttribute("ferramentas", lista);
-		
 		return "admin/lista-ferramenta";
 	}
 	
@@ -58,11 +57,17 @@ public class FerramentaController {
 	}
 	
 	@RequestMapping("/admin/editar/{id}")
-    public ModelAndView edit(@PathVariable("id") Ferramenta f) {
-		
+    	public ModelAndView edit(@PathVariable("id") Ferramenta f) {	
 		ModelAndView mv = new ModelAndView("/admin/adicionar-ferramenta");
-         mv.addObject("ferramenta", f);
-        return mv;
+       		mv.addObject("ferramenta", f);
+        	return mv;
     }
+	
+	@RequestMapping(value="{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
+		ferramenta.delete(codigo);
+		attributes.addFlashAttribute("mensagem", "Ferramenta excluída com sucesso!");
+		return "redirect:admin/lista-ferramenta";
+	}
 	
 }
