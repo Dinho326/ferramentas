@@ -3,8 +3,14 @@ package br.com.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -21,19 +27,16 @@ public class FerramentaController {
 	@Autowired
 	private FerramentaRepository ferramenta;
 	
-	@RequestMapping("/")
-	public String indexView() {
-		return "index";
-	}
-	
 	@RequestMapping("/admin")
 	public String index() {
-		return "redirect:admin/index";
+		return "admin/index";
 	}
 	
 	@RequestMapping("/admin/adicionar-ferramenta")
-	public String adicionar() {
-		return "admin/adicionar-ferramenta";
+	public ModelAndView adicionar() {
+		ModelAndView mv = new ModelAndView("admin/adicionar-ferramenta");
+		mv.addObject(new Ferramenta());
+		return mv;
 	}
 	
 	@RequestMapping("/admin/lista-ferramenta")
@@ -45,13 +48,21 @@ public class FerramentaController {
 	}
 	
 	@RequestMapping(value = "/admin/salvar", method=RequestMethod.POST)
-	public String salvar( @RequestParam("patrimonio") Long patrimonio,
-			@RequestParam("nome") String nome) {
-		Ferramenta f = new Ferramenta(patrimonio, nome);
+	public String salvar(@Validated Ferramenta f, Errors erros, RedirectAttributes redirectAttributes){
+		if(erros.hasErrors()){
+			return "admin/adicionar-ferramenta";
+		}
 		ferramenta.save(f);
-		//Iterable<Ferramenta> lista = ferramenta.findAll();
-		//model.addAttribute("ferramentas", lista);
-		return "redirect:/admin/lista-ferramenta";
+		redirectAttributes.addFlashAttribute("mensagem", "Título salvo com sucesso!");
+		return "redirect:adicionar-ferramenta";
 	}
+	
+	@RequestMapping("/admin/editar/{id}")
+    public ModelAndView edit(@PathVariable("id") Ferramenta f) {
+		
+		ModelAndView mv = new ModelAndView("/admin/adicionar-ferramenta");
+         mv.addObject("ferramenta", f);
+        return mv;
+    }
 	
 }

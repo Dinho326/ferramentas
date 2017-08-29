@@ -1,57 +1,62 @@
-package br.com.controller;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-
-import br.com.model.Ferramenta;
-import br.com.repository.FerramentaRepository;
-
-@Controller
-public class FerramentaController {
-
-	/** Bean gerenciado do Spring
-	 * é necessário injetar com a anotação
-	 * @Autowired
-	 *  **/
-	@Autowired
-	private FerramentaRepository ferramenta;
-	
-	@RequestMapping("/")
-	public String indexView() {
-		return "index";
-	}
-	
-	@RequestMapping("/admin")
-	public String index() {
-		return "redirect:admin/index";
-	}
-	
-	@RequestMapping("/admin/adicionar-ferramenta")
-	public String adicionar() {
-		return "admin/adicionar-ferramenta";
-	}
-	
-	@RequestMapping("/admin/lista-ferramenta")
-	public String lista(Model model) {
-		Iterable<Ferramenta> lista = ferramenta.findAll();
-		model.addAttribute("ferramentas", lista);
-		
-		return "admin/lista-ferramenta";
-	}
-	
-	@RequestMapping(value = "/admin/salvar", method=RequestMethod.POST)
-	public String salvar( @RequestParam("patrimonio") Long patrimonio,
-			@RequestParam("nome") String nome) {
-		Ferramenta f = new Ferramenta(patrimonio, nome);
-		ferramenta.save(f);
-		//Iterable<Ferramenta> lista = ferramenta.findAll();
-		//model.addAttribute("ferramentas", lista);
-		return "redirect:/admin/lista-ferramenta";
-	}
-	
-}
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layout/template">
+<body>
+<section layout:fragment="content"> 
+    <div id="wrapper">
+        <div id="page-wrapper">
+		<div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Listagem de Ferramentas</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+                <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Lista
+                        </div>
+							<div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Patrimônio</th>
+                                            <th>Nome</th>
+                                            <th class="col-lg-1">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr th:each=" f : ${ferramentas}">
+                                      	 	<td><span th:text="${f.id}"></span></td>
+											<td><span th:text="${f.patrimonio}"></span></td>
+											<td><span th:text="${f.nome}"></span></td>
+			                                <td>
+			                                	<a title="Editar" th:href="@{/admin/editar/{id}(id=${f.id})}">
+			                                		<span class="glyphicon glyphicon-pencil js-tooltip"> &nbsp;</span>
+			                                	</a>
+			                                	<a title="Excluir"  th:href="@{/admin/deletar/{id}(id=${f.id})}">
+			                                		<span class="glyphicon glyphicon-remove"></span>
+			                                	</a>
+			                                </td>
+									   </tr>
+                                    </tbody>
+                                </table>
+	                            </div>
+	                            <!-- /.table-responsive -->
+	                        </div>
+	                        <!-- /.panel-body -->
+						</div>
+					</div>
+				</div>
+            </div>
+		</div>
+	</div>
+</section>
+</body>
+</html>
