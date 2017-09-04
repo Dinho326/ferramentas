@@ -66,7 +66,7 @@ public class FerramentaController {
 	@RequestMapping("/admin/ferramenta/editar/{id}")
     public ModelAndView edit(@PathVariable("id") Ferramenta f) {
 		
-		ModelAndView mv = new ModelAndView("/admin/ferramenta/adicionar-ferramenta");
+		ModelAndView mv = new ModelAndView("admin/ferramenta/adicionar-ferramenta");
          mv.addObject("ferramenta", f);
         return mv;
     }
@@ -76,7 +76,7 @@ public class FerramentaController {
 		Long codigo = Long.parseLong(id);
 		ferramentaService.excluir(codigo);
 		redirectAttributes.addFlashAttribute("mensagem", "Ferramenta exlcuída com sucesso" );
-		return"redirect:admin/ferramenta/lista-ferramenta";
+		return"admin/ferramenta/lista-ferramenta";
 	}
 	
 }
