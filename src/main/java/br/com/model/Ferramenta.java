@@ -52,9 +52,17 @@ public class Ferramenta implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private StatusEnum status;
 
+	/** DateTimeFormat
+	 * anotação aproveitada pelo thymeleaf na view
+	 *  **/
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataCadastrada;
+	
+	
+	public boolean isEmprestado() {
+		return StatusEnum.EMPRESTADO.equals(this.status);
+	}
 	
 	public Long getId() {
 		return id;
