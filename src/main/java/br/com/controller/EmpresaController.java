@@ -14,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.model.Empresa;
-import br.com.model.Ferramenta;
 import br.com.service.EmpresaService;
 
 @Controller
@@ -64,7 +63,7 @@ public class EmpresaController {
 	public String excluir(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		empresaService.excluir(id);
 		redirectAttributes.addFlashAttribute("mensagem", "Empresa exlcuída com sucesso" );
-		return"redirect:admin/empresa/lista-empresa";
+		return"admin/empresa/lista-empresa";
 	}
 	
 	@RequestMapping(PATH)
