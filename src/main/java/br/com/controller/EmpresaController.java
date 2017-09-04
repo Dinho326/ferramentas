@@ -63,6 +63,8 @@ public class EmpresaController {
 	public ModelAndView excluir(@PathVariable Long id, Model model) {
 		empresaService.excluir(id);
 		ModelAndView mv = new ModelAndView(PATH_LISTA);
+		Iterable<Empresa> lista = empresaService.listaEmpresa();
+		model.addAttribute("empresas", lista);
 		model.addAttribute("mensagem" , "Empresa exlcuída com sucesso");
 		return mv;
 	}
