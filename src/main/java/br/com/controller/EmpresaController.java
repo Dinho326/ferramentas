@@ -24,8 +24,8 @@ public class EmpresaController {
 	private EmpresaService empresaService;
 
 	private static final String PATH = "/admin/empresa/";
-	private static final String PATH_ADICIONAR = "/admin/empresa/adicionar-empresa";
-	private static final String PATH_LISTA = "/admin/empresa/lista-empresa";
+	private static final String PATH_ADICIONAR = "admin/empresa/adicionar-empresa";
+	private static final String PATH_LISTA = "admin/empresa/lista-empresa";
 	
 	@RequestMapping(PATH_ADICIONAR)
 	public ModelAndView adicionar() {
@@ -64,7 +64,7 @@ public class EmpresaController {
 	public String excluir(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		empresaService.excluir(id);
 		redirectAttributes.addFlashAttribute("mensagem", "Empresa exlcuída com sucesso" );
-		return"redirect:/admin/empresa/lista-empresa";
+		return"redirect:admin/empresa/lista-empresa";
 	}
 	
 	@RequestMapping(PATH)
