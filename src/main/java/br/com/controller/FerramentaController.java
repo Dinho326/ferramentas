@@ -76,7 +76,10 @@ public class FerramentaController {
 		Long codigo = Long.parseLong(id);
 		ferramentaService.excluir(codigo);
 		ModelAndView mv = new ModelAndView("admin/ferramenta/lista-ferramenta");
+		Iterable<Ferramenta> lista = ferramenta.findAll();
+		model.addAttribute("ferramentas", lista);
 		model.addAttribute("mensagem" , "Ferramenta exlcuída com sucesso");
+		
 		return mv;
 	}
 	
