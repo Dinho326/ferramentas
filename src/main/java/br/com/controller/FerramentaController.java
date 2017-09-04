@@ -38,7 +38,7 @@ public class FerramentaController {
 	
 	@RequestMapping("/admin/ferramenta/adicionar-ferramenta")
 	public ModelAndView adicionar() {
-		ModelAndView mv = new ModelAndView("/admin/ferramenta/adicionar-ferramenta");
+		ModelAndView mv = new ModelAndView("admin/ferramenta/adicionar-ferramenta");
 		mv.addObject(new Ferramenta());
 		return mv;
 	}
@@ -48,7 +48,7 @@ public class FerramentaController {
 		Iterable<Ferramenta> lista = ferramenta.findAll();
 		model.addAttribute("ferramentas", lista);
 		
-		return "/admin/ferramenta/lista-ferramenta";
+		return "admin/ferramenta/lista-ferramenta";
 	}
 	
 	@RequestMapping(value = "/admin/ferramenta/salvar", method=RequestMethod.POST)
@@ -76,7 +76,7 @@ public class FerramentaController {
 		Long codigo = Long.parseLong(id);
 		ferramentaService.excluir(codigo);
 		redirectAttributes.addFlashAttribute("mensagem", "Ferramenta exlcuída com sucesso" );
-		return"redirect:/admin/ferramenta/lista-ferramenta";
+		return"redirect:admin/ferramenta/lista-ferramenta";
 	}
 	
 }
