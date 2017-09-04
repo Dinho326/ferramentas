@@ -60,10 +60,11 @@ public class EmpresaController {
     }
 	
 	@RequestMapping(value= "/admin/empresa/deletar/{id}",method=RequestMethod.DELETE)
-	public String excluir(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+	public ModelAndView excluir(@PathVariable Long id, Model model) {
 		empresaService.excluir(id);
-		redirectAttributes.addFlashAttribute("mensagem", "Empresa exlcuída com sucesso" );
-		return"admin/empresa/lista-empresa";
+		ModelAndView mv = new ModelAndView(PATH_LISTA);
+		model.addAttribute("mensagem" , "Empresa exlcuída com sucesso");
+		return mv;
 	}
 	
 	@RequestMapping(PATH)
