@@ -72,11 +72,12 @@ public class FerramentaController {
     }
 	
 	@RequestMapping(value= "/admin/ferramenta/deletar/{id}",method=RequestMethod.DELETE)
-	public String excluir(@PathVariable String id, RedirectAttributes redirectAttributes) {
+	public ModelAndView excluir(@PathVariable String id, Model model) {
 		Long codigo = Long.parseLong(id);
 		ferramentaService.excluir(codigo);
-		redirectAttributes.addFlashAttribute("mensagem", "Ferramenta exlcuída com sucesso" );
-		return"admin/ferramenta/lista-ferramenta";
+		ModelAndView mv = new ModelAndView("admin/ferramenta/lista-ferramenta");
+		model.addAttribute("mensagem" , "Ferramenta exlcuída com sucesso");
+		return mv;
 	}
 	
 }
