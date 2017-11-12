@@ -15,8 +15,8 @@ $('#modalExclusao').on('show.bs.modal', function(event){
 	.html('Tem certeza de que deseja excluir <strong>' +nome+'</strong>?');
 	
 });
-//toda vez que carregar a página
 $(function() {
+	$('[rel="tooltip"]').tooltip();//tooltip
+	$('.cnpj').mask('00.000.000/0000-00', {reverse: true});//mask cnpj
 	
-	$('[rel="tooltip"]').tooltip();
 });

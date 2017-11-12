@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.stereotype.Controller;
@@ -44,11 +45,12 @@ public class FerramentaController {
 	}
 	
 	@RequestMapping("/admin/ferramenta/lista-ferramenta")
-	public String lista(Model model) {
-		Iterable<Ferramenta> lista = ferramenta.findAll();
-		model.addAttribute("ferramentas", lista);
-		
-		return "admin/ferramenta/lista-ferramenta";
+	public ModelAndView lista(@RequestParam(defaultValue = "%")String nome) {
+		//Iterable<Ferramenta> lista = ferramenta.findAll();
+		Iterable<Ferramenta> lista = ferramenta.findByNomeContaining(nome);
+		ModelAndView mv = new ModelAndView("admin/ferramenta/lista-ferramenta");
+		mv.addObject("ferramentas", lista);
+		return mv;
 	}
 	
 	@RequestMapping(value = "/admin/ferramenta/salvar", method=RequestMethod.POST)
@@ -66,21 +68,17 @@ public class FerramentaController {
 	@RequestMapping("/admin/ferramenta/editar/{id}")
     public ModelAndView edit(@PathVariable("id") Ferramenta f) {
 		
-		ModelAndView mv = new ModelAndView("admin/ferramenta/adicionar-ferramenta");
+		ModelAndView mv = new ModelAndView("/admin/ferramenta/adicionar-ferramenta");
          mv.addObject("ferramenta", f);
         return mv;
     }
 	
 	@RequestMapping(value= "/admin/ferramenta/deletar/{id}",method=RequestMethod.DELETE)
-	public ModelAndView excluir(@PathVariable String id, Model model) {
+	public String excluir(@PathVariable String id, RedirectAttributes redirectAttributes) {
 		Long codigo = Long.parseLong(id);
 		ferramentaService.excluir(codigo);
-		ModelAndView mv = new ModelAndView("admin/ferramenta/lista-ferramenta");
-		Iterable<Ferramenta> lista = ferramenta.findAll();
-		model.addAttribute("ferramentas", lista);
-		model.addAttribute("mensagem" , "Ferramenta exlcuída com sucesso");
-		
-		return mv;
+		redirectAttributes.addFlashAttribute("mensagem", "Ferramenta exlcuída com sucesso" );
+		return"redirect:/admin/ferramenta/lista-ferramenta";
 	}
 	
 }

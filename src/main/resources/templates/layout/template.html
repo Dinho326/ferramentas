@@ -21,7 +21,9 @@
 
     <!-- Custom CSS -->
     <link href="/dist/css/sb-admin-2.css" rel="stylesheet"/>
-
+    <link href="/dist/css/custom.css" rel="stylesheet"/>
+    <!-- boostrap-select  -->
+	<link href="/dist/css/bootstrap-select.css" rel="stylesheet"/>
     <!-- Morris Charts CSS -->
     <link href="/vendor/morrisjs/morris.css" rel="stylesheet"/>
 
@@ -310,6 +312,19 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-users"></i> Funcionários<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admin/funcionario/adicionar-funcionario">Adicionar Funcionários</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/funcionario/lista-funcionario">Listar Funcionários</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
+                        <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Ferramentas<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -317,6 +332,19 @@
                                 </li>
                                 <li>
                                     <a href="/admin/ferramenta/lista-ferramenta">Listar Ferramenta</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-gears"></i> Configurações<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/admin/empresa/carregar">Adicionar lista de Empresas</a>
+                                </li>
+                                <li>
+                                     <a href="/admin/funcionario/carregar">Adicionar Lista de Funcionários</a> 
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -336,6 +364,8 @@
     <section layout:fragment="footer">
      <!-- jQuery -->
 	    <script src="/vendor/jquery/jquery.min.js"></script>
+	    <!-- jQueryMask -->
+	    <script src="/vendor/jquery/jquery.mask.js"></script>
 	
 	    <!-- Bootstrap Core JavaScript -->
 	    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -350,7 +380,9 @@
 	
 	    <!-- Custom Theme JavaScript -->
 	    <script src="/dist/js/sb-admin-2.js"></script> 
-	    <script src="/js/custom.js"></script>    
+	    <script src="/js/custom.js"></script> 
+	    <!--Bootstrap Select  --> 
+	    <script src="/js/bootstrap-select.js"></script>    
     </section>
 
   </body>
