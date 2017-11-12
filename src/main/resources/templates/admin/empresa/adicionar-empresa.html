@@ -25,8 +25,8 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <form role="form" th:object="${empresa}" th:action="@{/admin/empresa/salvar}" method="post">
-                                        <div layout:include="/admin/mensagem"></div>
-                  						<div layout:include="/admin/mensagemError"></div>
+                                       <div layout:include="admin/mensagem"></div>
+                  						<div layout:include="admin/mensagemError"></div>
                                        <input type="hidden" th:field="*{id}" />
                                         <div class="form-group" th:classappend="${#fields.hasErrors('cnpj')} ? has-error">
                                             <label for="cnpj">CNPJ</label>
