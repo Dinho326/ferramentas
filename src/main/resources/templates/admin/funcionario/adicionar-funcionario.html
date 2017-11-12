@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorator="layout/template">
+<body>
+<section layout:fragment="content"> 
+    <div id="wrapper">
+        <div id="page-wrapper">
+		<div class="row">
+               <div class="col-lg-12">
+                   <h1 class="page-header">Adicionar Funcionário</h1>
+               </div>
+               <!-- /.col-lg-12 -->
+        </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Formulário
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <form role="form" th:object="${funcionario}" th:action="@{/admin/funcionario/salvar}" method="post">
+                                        <div layout:include="/admin/mensagem"></div>
+                  						<div layout:include="/admin/mensagemError"></div>
+                                       <input type="hidden" th:field="*{id}" />
+                                        <div class="form-group" th:classappend="${#fields.hasErrors('matricula')} ? has-error">
+                                            <label for="matricula">Matricula</label>
+                                            <input  type="number" th:field="*{matricula}" class="form-control"/>
+                                            <p class="help-block">Exemplo: 1001</p>
+                                        </div>
+                                        <div class="form-group" th:classappend="${#fields.hasErrors('nome')} ? has-error">
+                                            <label for="nome">Nome</label>
+                                            <input th:field="*{nome}" class="form-control" />
+                                        </div>
+                                        <div class="form-group">
+                                        	<select required="required" class=" selectpicker show-tick" data-live-search="true" title="Selecione a empresa" name="empresa">
+                                        		<option th:each=" e : ${empresaList}"
+                                        		 th:value="${e.id}" th:text="${e.nome}"></option>
+                                        	</select>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                        <button type="reset" class="btn btn-default">Limpar</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+		</div>
+	</div>
+</section>
+</body>
+</html>
