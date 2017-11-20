@@ -37,12 +37,17 @@
                                             <label for="nome">Nome</label>
                                             <input th:field="*{nome}" class="form-control" />
                                         </div>
-                                        <div class="form-group">
-                                        	<select required="required" class=" selectpicker show-tick" data-live-search="true" title="Selecione a empresa" name="empresa">
+                                        <div class="form-group" th:if="${!#lists.isEmpty(empresaList)}"  th:classappend="${#fields.hasErrors('empresa')} ? has-error" >
+                                        	<select class=" selectpicker show-tick" data-live-search="true" title="Selecione a empresa" name="empresa">
                                         		<option th:each=" e : ${empresaList}"
                                         		 th:value="${e.id}" th:text="${e.nome}"></option>
                                         	</select>
                                         </div>
+                                         <div class="form-group" th:if="${#lists.isEmpty(empresaList)}">
+									   		<label for="nome">Empresa</label>
+									   		<input th:field="*{empresa}"  type="hidden"/>
+                                            <input th:value="*{empresa}" readonly="readonly" class="form-control" />  
+									   	</div> 
                                         
                                         <button type="submit" class="btn btn-primary">Salvar</button>
                                         <button type="reset" class="btn btn-default">Limpar</button>

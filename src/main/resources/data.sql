@@ -1,0 +1,61 @@
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (123,	'LANTERNA', 			'DISPONIVEL','2017-10-10');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (1234,	'ESCADA', 				'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (12345,	'NÍVEL', 				'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (12346,	'ESTILETE', 			'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (12347,	'CHAVES ALLEN', 		'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (6541,	'PARAFUSADEIRA', 		'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (35485,	'FURADEIRA', 			'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (1564,	'CHAVE DE GRIFO', 		'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (2165,	'CANIVETE SUIÇO', 	  	'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (16546,	'TESOURA', 		  		'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (32165,	'ALICATE UNIVERSAL', 	'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (21654,	'SERRA', 				'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (16516,	'TRENA', 				'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (1651,	'CHAVE DE FENDA', 		'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (321654,	'CHAVE PHILLIPS',		'DISPONIVEL','2017-11-15');
+INSERT INTO FERRAMENTA (patrimonio,nome,status,data_cadastrada) VALUES (23156,	'TESOURA', 				'DISPONIVEL','2017-11-15');
+
+
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Master Reforma Engenharia', 	'39.995.501/0001-90','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Gabi Telhados Colonial',		'63.190.457/0001-26','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('AJA - Projetos e Construções', 	'50.581.318/0001-81','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Pitta Construções', 			'45.391.985/0001-61','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Fernandes Correa Construção Civil E Reformas', '71.235.408/0001-90','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Renova Drywall', 				'37.894.476/0001-23','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Geonova Topografia', 			'31.936.702/0001-05','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('As Engenharia', 				'82.378.548/0001-34','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Nova Era Engenharia e Arquitetura', '87.288.351/0001-28','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Mg Serviços E Reformas', 		'48.598.284/0001-96','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Parq Arquitetura', 				'05.938.765/0001-90','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Nathália Martins', 				'63.297.179/0001-00','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Lemarg Projetos E Servicos', 	'63.159.522/0001-50','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Rjs Construções E Reformas Ltda', '88.653.802/0001-41','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('iProjeta Arquitetura Sustentável','40.516.589/0001-08','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('4lean Engenharia E Gestão', 	'99.170.947/0001-08','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Vanessa Soares Arquitetura', 	'99.841.378/0001-85','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Onix Arquitetura', 				'10.892.610/0001-09','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Fa Construções', 				'75.043.635/0001-75','2017-11-15');
+INSERT INTO EMPRESA (nome,cnpj,data_cadastrada) VALUES('Jm Reformas E Construçoes', 	'86.944.512/0001-21','2017-11-15');
+
+
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Luís Fernando',	123,	1,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Luís Filipe',	456,	2,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('João Raphael',	789,	10,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('José Paulo',		987,	5,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('José Pedro',		654,	2,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Marcos André',	321,	7,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('João Fernando',	369,	3,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Enzo Gabriel',	258,	9,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Luis Miguel',	147,	16,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Luís Gustavo',	963,	11,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Maria Eduarda',	852,	3,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Ana Brenda',		741,	12,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Ana Celine',		357,	15,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Ana Cristina',	753,	14,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Maria Joaquina',	159,	18,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Manuela Alves',	951,	19,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Lucas Gabriel',	658,	9,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Daniel Matheus',	458,	8,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Márcio Luís',	125,	7,	'2017-11-15');
+INSERT INTO FUNCIONARIO (nome,matricula,empresa_id,data_cadastrada)VALUES('Edilson Carvalho',1,		1,	'2017-11-15');
+

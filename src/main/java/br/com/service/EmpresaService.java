@@ -7,6 +7,13 @@ import org.springframework.stereotype.Service;
 import br.com.model.Empresa;
 import br.com.repository.EmpresaRepository;
 
+/**
+ * Classe EmpresaService, responsável por
+ * ser o intermédiario entre o EmpresaController e EmpresaRepository
+ * @author Carvalho
+ * @since  20/11/2017
+ * @version 1.0
+ */
 @Service
 public class EmpresaService {
 
@@ -24,5 +31,18 @@ public class EmpresaService {
 	public Iterable<Empresa> listaEmpresa(){
 		
 		return empresaRepository.findAll();
+	}
+	
+	public Empresa getEmpresa(Long id) {
+		
+		return empresaRepository.findOne(id);
+	}
+	
+	public Empresa getByNome(String nome) {
+		return empresaRepository.findByNome(nome);
+	}
+	
+	public Empresa getByCnpj(String cnpj) {
+		return empresaRepository.findByCnpj(cnpj);
 	}
 }

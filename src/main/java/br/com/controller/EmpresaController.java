@@ -1,8 +1,6 @@
 package br.com.controller;
 
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,10 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.com.enumUtil.EmpresaEnum;
 import br.com.model.Empresa;
 import br.com.service.EmpresaService;
 
+/**
+ * Classe responsável por ser o Controller
+ * das requisições relacionadas ao menu empresa 
+ * @author Carvalho
+ * @since  20/11/2017
+ * @version 1.0
+ */
 @Controller
 public class EmpresaController {
 	
@@ -28,9 +32,14 @@ public class EmpresaController {
 	private static final String PATH = "admin/empresa/";
 	private static final String PATH_ADICIONAR = "admin/empresa/adicionar-empresa";
 	private static final String PATH_LISTA = "admin/empresa/lista-empresa";
-	private static final String PATH_CARREGAR = "admin/empresa/carregar";
 	
 	
+	/**
+	 * Método que retorna um ModelAndView com um novo
+	 * objeto empresa
+	 * @author Carvalho
+	 * @return 
+	 */
 	@RequestMapping(PATH_ADICIONAR)
 	public ModelAndView adicionar() {
 		 
@@ -39,6 +48,16 @@ public class EmpresaController {
 		return mv;
 	}
 	
+	/**
+	 * Método responsável por verificar se os campos
+	 * estão de acordo com as regras de preenchimento e por fazer
+	 * chamada ao método que adiciona o objeto na base de dados
+	 * @author Carvalho
+	 * @param e
+	 * @param erros
+	 * @param redirectAttributes
+	 * @return
+	 */
 	@RequestMapping(value = PATH+"salvar", method=RequestMethod.POST)
 	public String salvar(@Validated Empresa e, Errors erros, RedirectAttributes redirectAttributes){
 		if(erros.hasErrors()){
@@ -50,6 +69,13 @@ public class EmpresaController {
 		return "redirect:adicionar-empresa";
 	}
 	
+	/**
+	 * Método responsável por retornar a view uma
+	 * lista de empresas 
+	 * @author Carvalho
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(PATH_LISTA)
 	public String lista(Model model) {
 		Iterable<Empresa> lista = empresaService.listaEmpresa();
@@ -57,6 +83,14 @@ public class EmpresaController {
 		return PATH_LISTA;
 	}
 	
+	/**
+	 * Método responável por retornar a view
+	 * uma empresa específica, selecionada pelo usuário
+	 * para edição
+	 * @author Carvalho
+	 * @param e
+	 * @return
+	 */
 	@RequestMapping("/admin/empresa/editar/{id}")
     public ModelAndView edit(@PathVariable("id") Empresa e) {
 		
@@ -65,6 +99,15 @@ public class EmpresaController {
         return mv;
     }
 	
+	/**
+	 * Método responsável por fazer a chamada ao método excluir
+	 * passando o id da empresa e retornar a view uma lista de empresas
+	 * atualizada
+	 * @author Carvalho
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value= "/admin/empresa/deletar/{id}",method=RequestMethod.DELETE)
 	public ModelAndView excluir(@PathVariable Long id, Model model) {
 		empresaService.excluir(id);
@@ -73,20 +116,6 @@ public class EmpresaController {
 		model.addAttribute("empresas", lista);
 		ModelAndView mv = new ModelAndView(PATH_LISTA);
 		return mv;
-	}
-	
-	@RequestMapping(PATH_CARREGAR)
-	public String carregarListaEnum(RedirectAttributes redirectAttributes) {
-		List<EmpresaEnum> lista = Arrays.asList(EmpresaEnum.values());
-	        for (int i = 0; i < lista.size(); i++) {
-	        	Empresa e = new Empresa();
-	        	e.setNome(lista.get(i).getNome());
-	        	e.setCnpj(lista.get(i).getCnpj());
-	        	e.setDataCadastrada(new Date());
-	        	empresaService.salvar(e);
-	        }
-	        redirectAttributes.addFlashAttribute("mensagem", "Lista de empresa criada com sucesso !");
-	        return "redirect:lista-empresa";
 	}
 
 }

@@ -19,6 +19,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import br.com.enumUtil.StatusEnum;
 
+/**
+ * Classe Modelo de Ferramenta
+ * @author Carvalho
+ * @since  20/11/2017
+ * @version 1.0
+ */
 @Entity
 public class Ferramenta implements Serializable{
 

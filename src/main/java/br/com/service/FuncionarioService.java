@@ -6,6 +6,13 @@ import org.springframework.stereotype.Service;
 import br.com.model.Funcionario;
 import br.com.repository.FuncionarioRepository;
 
+/**
+ * Classe FuncionarioService, responsável por
+ * ser o intermédiario entre o FuncionarioController e FuncionarioRepository
+ * @author Carvalho
+ * @since  20/11/2017
+ * @version 1.0
+ */
 @Service
 public class FuncionarioService {
 

@@ -9,10 +9,16 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
+/**
+ * Classe Modelo de Funcionário
+ * @author Carvalho
+ * @since  20/11/2017
+ * @version 1.0
+ */
 @Entity
 public class Funcionario implements Serializable{
 
@@ -25,6 +31,7 @@ public class Funcionario implements Serializable{
 	@GeneratedValue
 	private Long id;
 	
+	@NotNull(message = "Favor preencher a matrícula do Funcionário")
 	@Column
 	private Long matricula;
 	
@@ -32,7 +39,7 @@ public class Funcionario implements Serializable{
 	@Column
 	private String nome;
 	
-	//@NotEmpty(message = "Favor preencher selecionar a empresa do Funcionário")
+	@NotNull(message = "Favor  selecionar a empresa do Funcionário")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Empresa empresa;
 	
